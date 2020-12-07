@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F2EA1EBC257DF56A00C1428B /* PlanetImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EA1EBB257DF56A00C1428B /* PlanetImages.swift */; };
 		F2EDD9BE257D86D1005C32B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EDD9BD257D86D1005C32B7 /* AppDelegate.swift */; };
 		F2EDD9C0257D86D1005C32B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EDD9BF257D86D1005C32B7 /* SceneDelegate.swift */; };
 		F2EDD9C2257D86D1005C32B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EDD9C1257D86D1005C32B7 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F2EA1EBB257DF56A00C1428B /* PlanetImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetImages.swift; sourceTree = "<group>"; };
 		F2EDD9BA257D86D1005C32B7 /* ARPlanetarium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARPlanetarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2EDD9BD257D86D1005C32B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2EDD9BF257D86D1005C32B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		F2EDD9BC257D86D1005C32B7 /* ARPlanetarium */ = {
 			isa = PBXGroup;
 			children = (
+				F2EA1EBB257DF56A00C1428B /* PlanetImages.swift */,
 				F2EDD9BD257D86D1005C32B7 /* AppDelegate.swift */,
 				F2EDD9BF257D86D1005C32B7 /* SceneDelegate.swift */,
 				F2EDD9C1257D86D1005C32B7 /* ViewController.swift */,
@@ -140,6 +143,7 @@
 				F2EDD9C2257D86D1005C32B7 /* ViewController.swift in Sources */,
 				F2EDD9BE257D86D1005C32B7 /* AppDelegate.swift in Sources */,
 				F2EDD9C0257D86D1005C32B7 /* SceneDelegate.swift in Sources */,
+				F2EA1EBC257DF56A00C1428B /* PlanetImages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
