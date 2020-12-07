@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var sceneView: ARSCNView!
     
     let configuration = ARWorldTrackingConfiguration()
+    let sunPosition = SCNVector3(0,0,-1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +30,21 @@ class ViewController: UIViewController {
     
     
     func createPlanets() {
-        let sunPosition = SCNVector3(0,0,-1)
-        
+        createSun()
+        createEarth()
+        createMercury()
+    }
+    
+    func createSun() {
         let sun = createPlanetNode(geometry: SCNSphere(radius: 0.3),
                                    position: sunPosition,
                                    diffuse: .sunDiffuse)
         sceneView.scene.rootNode.addChildNode(sun)
         sun.geometry?.firstMaterial?.diffuse.contents = PlanetImages.sunDiffuse.makeImage()
-        
+        sun.runAction(RotationAction(15))
+    }
+    
+    func createEarth() {
         let earth = createPlanetNode(geometry: SCNSphere(radius: 0.05),
                                    position: SCNVector3(1,0,0),
                                    diffuse: .earthDiffuse,
@@ -44,13 +52,28 @@ class ViewController: UIViewController {
                                    normal: .earthNormal,
                                    emission: .earthClouds)
         
-        let earthParent = SCNNode()
-        earthParent.position = sunPosition
+        let earthParent = createParentNode(position: sunPosition)
         earthParent.addChildNode(earth)
-        sceneView.scene.rootNode.addChildNode(earthParent)
-        sun.runAction(RotationAction(15))
-        earth.runAction(RotationAction(8))
         earthParent.runAction(RotationAction(5))
+        earth.runAction(RotationAction(8))
+    }
+    
+    func createMercury() {
+        let mercuryParent = createParentNode(position: sunPosition)
+        let mercury = createPlanetNode(geometry: SCNSphere(radius: 0.05),
+                                       position: SCNVector3(0.45,0,0),
+                                       diffuse: .mercuryDiffuse)
+        mercuryParent.addChildNode(mercury)
+        mercury.runAction(RotationAction(5))
+        mercuryParent.runAction(RotationAction(2))
+    }
+    
+    
+    func createParentNode(position: SCNVector3) -> SCNNode {
+        let node = SCNNode()
+        node.position = position
+        sceneView.scene.rootNode.addChildNode(node)
+        return node
     }
     
     func createPlanetNode(geometry: SCNGeometry,
