@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         createSun()
         createEarth()
         createMercury()
+        createVenus()
     }
     
     func createSun() {
@@ -42,6 +43,27 @@ class ViewController: UIViewController {
         sceneView.scene.rootNode.addChildNode(sun)
         sun.geometry?.firstMaterial?.diffuse.contents = PlanetImages.sunDiffuse.makeImage()
         sun.runAction(RotationAction(15))
+    }
+    
+    func createMercury() {
+        let mercuryParent = createParentNode(position: sunPosition)
+        let mercury = createPlanetNode(geometry: SCNSphere(radius: 0.05),
+                                       position: SCNVector3(0.45,0,0),
+                                       diffuse: .mercuryDiffuse)
+        mercuryParent.addChildNode(mercury)
+        mercury.runAction(RotationAction(5))
+        mercuryParent.runAction(RotationAction(2))
+    }
+    
+    func createVenus() {
+        let venusParent = createParentNode(position: sunPosition)
+        let venus = createPlanetNode(geometry: SCNSphere(radius: 0.05),
+                                     position: SCNVector3(0.75,0,0),
+                                     diffuse: .venusDiffuse,
+                                     specular: .venusSpecular)
+        venusParent.addChildNode(venus)
+        venusParent.runAction(RotationAction(3.5))
+        venusParent.runAction(RotationAction(5))
     }
     
     func createEarth() {
@@ -58,15 +80,7 @@ class ViewController: UIViewController {
         earth.runAction(RotationAction(8))
     }
     
-    func createMercury() {
-        let mercuryParent = createParentNode(position: sunPosition)
-        let mercury = createPlanetNode(geometry: SCNSphere(radius: 0.05),
-                                       position: SCNVector3(0.45,0,0),
-                                       diffuse: .mercuryDiffuse)
-        mercuryParent.addChildNode(mercury)
-        mercury.runAction(RotationAction(5))
-        mercuryParent.runAction(RotationAction(2))
-    }
+
     
     
     func createParentNode(position: SCNVector3) -> SCNNode {
