@@ -24,15 +24,24 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        createSun()
+        createPlanets()
     }
     
-    func createSun() {
+    
+    func createPlanets() {
         let sun = createPlanetNode(geometry: SCNSphere(radius: 0.3),
                                    position: SCNVector3(0,0,-1),
                                    diffuse: .sunDiffuse)
         sceneView.scene.rootNode.addChildNode(sun)
         sun.geometry?.firstMaterial?.diffuse.contents = PlanetImages.sunDiffuse.makeImage()
+        
+        let earth = createPlanetNode(geometry: SCNSphere(radius: 0.2),
+                                   position: SCNVector3(1,0,0),
+                                   diffuse: .earthDiffuse,
+                                   specular: .earthSpecular,
+                                   normal: .earthNormal,
+                                   emission: .earthClouds)
+        sun.addChildNode(earth)
     }
     
     func createPlanetNode(geometry: SCNGeometry,
@@ -51,5 +60,3 @@ class ViewController: UIViewController {
         return planetNode
     }
 }
-
-
