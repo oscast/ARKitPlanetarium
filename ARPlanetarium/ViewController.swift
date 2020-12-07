@@ -29,19 +29,28 @@ class ViewController: UIViewController {
     
     
     func createPlanets() {
+        let sunPosition = SCNVector3(0,0,-1)
+        
         let sun = createPlanetNode(geometry: SCNSphere(radius: 0.3),
-                                   position: SCNVector3(0,0,-1),
+                                   position: sunPosition,
                                    diffuse: .sunDiffuse)
         sceneView.scene.rootNode.addChildNode(sun)
         sun.geometry?.firstMaterial?.diffuse.contents = PlanetImages.sunDiffuse.makeImage()
         
-        let earth = createPlanetNode(geometry: SCNSphere(radius: 0.2),
+        let earth = createPlanetNode(geometry: SCNSphere(radius: 0.05),
                                    position: SCNVector3(1,0,0),
                                    diffuse: .earthDiffuse,
                                    specular: .earthSpecular,
                                    normal: .earthNormal,
                                    emission: .earthClouds)
-        sun.addChildNode(earth)
+        
+        let earthParent = SCNNode()
+        earthParent.position = sunPosition
+        earthParent.addChildNode(earth)
+        sceneView.scene.rootNode.addChildNode(earthParent)
+        sun.runAction(RotationAction(15))
+        earth.runAction(RotationAction(8))
+        earthParent.runAction(RotationAction(5))
     }
     
     func createPlanetNode(geometry: SCNGeometry,
@@ -59,4 +68,17 @@ class ViewController: UIViewController {
         
         return planetNode
     }
+    
+    func RotationAction(_ timeRotation: TimeInterval) -> SCNAction {
+        let nodeRotation = SCNAction.rotateBy(x: 0,
+                                          y: CGFloat(360.toRadians),
+                                          z: 0,
+                                          duration: timeRotation)
+        let continueAction = SCNAction.repeatForever(nodeRotation)
+        return continueAction
+    }
+}
+
+extension Int {
+    var toRadians: Double { return Double(self) * .pi/180 }
 }
