@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     
     func createMercury() {
         let mercuryParent = createParentNode(position: sunPosition)
-        let mercury = createPlanetNode(geometry: SCNSphere(radius: 0.05),
+        let mercury = createPlanetNode(geometry: SCNSphere(radius: 0.03),
                                        position: SCNVector3(0.45,0,0),
                                        diffuse: .mercuryDiffuse)
         mercuryParent.addChildNode(mercury)
@@ -62,18 +62,18 @@ class ViewController: UIViewController {
     
     func createVenus() {
         let venusParent = createParentNode(position: sunPosition)
-        let venus = createPlanetNode(geometry: SCNSphere(radius: 0.05),
-                                     position: SCNVector3(0.75,0,0),
+        let venus = createPlanetNode(geometry: SCNSphere(radius: 0.08),
+                                     position: SCNVector3(0.80,0,0),
                                      diffuse: .venusDiffuse,
                                      specular: .venusSpecular)
         venusParent.addChildNode(venus)
-        venusParent.runAction(RotationAction(6))
-        venusParent.runAction(RotationAction(7))
+        venus.runAction(RotationAction(6))
+        venusParent.runAction(RotationAction(12))
     }
     
     func createEarth() {
-        let earth = createPlanetNode(geometry: SCNSphere(radius: 0.05),
-                                   position: SCNVector3(1,0,0),
+        let earth = createPlanetNode(geometry: SCNSphere(radius: 0.06),
+                                     position: SCNVector3(1.20,0,0),
                                    diffuse: .earthDiffuse,
                                    specular: .earthSpecular,
                                    normal: .earthNormal,
@@ -81,14 +81,14 @@ class ViewController: UIViewController {
         
         let earthParent = createParentNode(position: sunPosition)
         earthParent.addChildNode(earth)
-        earthParent.runAction(RotationAction(30))
+        earthParent.runAction(RotationAction(20))
         earth.runAction(RotationAction(6))
         
         let moonParent = SCNNode()
         moonParent.position = earth.position
         earthParent.addChildNode(moonParent)
         let moon = createPlanetNode(geometry: SCNSphere(radius: 0.015),
-                                    position: SCNVector3(0.07, 0.07, 0),
+                                    position: SCNVector3(0.09, 0.09, 0),
                                     diffuse: .moonDiffuse)
         moonParent.addChildNode(moon)
         moonParent.runAction(RotationAction(3))
@@ -97,33 +97,33 @@ class ViewController: UIViewController {
     
     func createMars() {
         let mars = createPlanetNode(geometry: SCNSphere(radius: 0.05),
-                                    position: SCNVector3(1.25,0,0),
+                                    position: SCNVector3(1.35,0,0),
                                     diffuse: .marsDiffuse)
         
         let marsParent = createParentNode(position: sunPosition)
         marsParent.addChildNode(mars)
-        marsParent.runAction(RotationAction(12))
+        marsParent.runAction(RotationAction(30))
         mars.runAction(RotationAction(6))
     }
     
     func createJupiter() {
-        let jupiter = createPlanetNode(geometry: SCNSphere(radius: 0.1),
+        let jupiter = createPlanetNode(geometry: SCNSphere(radius: 0.16),
                                     position: SCNVector3(1.50,0,0),
                                     diffuse: .jupiterDiffuse)
         
         let jupiterParent = createParentNode(position: sunPosition)
         jupiterParent.addChildNode(jupiter)
-        jupiterParent.runAction(RotationAction(15))
+        jupiterParent.runAction(RotationAction(50))
         jupiter.runAction(RotationAction(10))
     }
     
     func createSaturn() {
-        let saturn = createPlanetNode(geometry: SCNSphere(radius: 0.1),
-                                    position: SCNVector3(-1.75,0,0),
+        let saturn = createPlanetNode(geometry: SCNSphere(radius: 0.14),
+                                      position: SCNVector3(0,0,2.00),
                                     diffuse: .saturnDiffuse)
         
         let saturnRing = createPlanetNode(geometry: SCNTube(innerRadius: 0.15,
-                                                       outerRadius: 0.40,
+                                                       outerRadius: 0.30,
                                                        height: 0.005),
                                      position: SCNVector3(0, 0, 0),
                                      diffuse: .saturnRingDiffuse)
@@ -132,29 +132,29 @@ class ViewController: UIViewController {
         
         let saturnParent = createParentNode(position: sunPosition)
         saturnParent.addChildNode(saturn)
-        saturnParent.runAction(RotationAction(17))
+        saturnParent.runAction(RotationAction(70))
         saturn.runAction(RotationAction(10))
     }
     
     func createUranus() {
-        let uranus = createPlanetNode(geometry: SCNSphere(radius: 0.1),
-                                    position: SCNVector3(-1.75,0,0),
+        let uranus = createPlanetNode(geometry: SCNSphere(radius: 0.12),
+                                      position: SCNVector3(0,0,-2.25),
                                     diffuse: .uranusDiffuse)
         
         let uranusParent = createParentNode(position: sunPosition)
         uranusParent.addChildNode(uranus)
-        uranusParent.runAction(RotationAction(14))
+        uranusParent.runAction(RotationAction(100))
         uranus.runAction(RotationAction(10))
     }
     
     func createNeptune() {
         let neptune = createPlanetNode(geometry: SCNSphere(radius: 0.1),
-                                       position: SCNVector3(-2.00,0,0),
+                                       position: SCNVector3(2.50,0,0),
                                     diffuse: .neptuneDiffuse)
         
         let neptuneParent = createParentNode(position: sunPosition)
         neptuneParent.addChildNode(neptune)
-        neptuneParent.runAction(RotationAction(12))
+        neptuneParent.runAction(RotationAction(120))
         neptune.runAction(RotationAction(10))
     }
     
