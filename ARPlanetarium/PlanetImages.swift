@@ -22,6 +22,7 @@ enum PlanetImages: String {
     case saturnRingDiffuse
     case uranusDiffuse
     case neptuneDiffuse
+    case moonDiffuse
     
     func makeImage() -> UIImage {
         UIImage(named: self.rawValue) ?? UIImage()

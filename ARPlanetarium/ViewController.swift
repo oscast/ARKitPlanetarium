@@ -13,12 +13,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var sceneView: ARSCNView!
     
     let configuration = ARWorldTrackingConfiguration()
-    let sunPosition = SCNVector3(0,0,-1)
+    let sunPosition = SCNVector3(0,0,-2.5)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        sceneView.debugOptions = [.showFeaturePoints, .showWorldOrigin]
+
         sceneView.session.run(configuration)
     }
     
@@ -81,8 +80,18 @@ class ViewController: UIViewController {
         
         let earthParent = createParentNode(position: sunPosition)
         earthParent.addChildNode(earth)
-        earthParent.runAction(RotationAction(10))
+        earthParent.runAction(RotationAction(30))
         earth.runAction(RotationAction(6))
+        
+        let moonParent = SCNNode()
+        moonParent.position = earth.position
+        earthParent.addChildNode(moonParent)
+        let moon = createPlanetNode(geometry: SCNSphere(radius: 0.015),
+                                    position: SCNVector3(0.07, 0.07, 0),
+                                    diffuse: .moonDiffuse)
+        moonParent.addChildNode(moon)
+        moonParent.runAction(RotationAction(3))
+        moon.runAction(RotationAction(1))
     }
     
     func createMars() {
