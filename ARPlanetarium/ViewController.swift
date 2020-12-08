@@ -112,6 +112,14 @@ class ViewController: UIViewController {
                                     position: SCNVector3(-1.75,0,0),
                                     diffuse: .saturnDiffuse)
         
+        let saturnRing = createPlanetNode(geometry: SCNTube(innerRadius: 0.15,
+                                                       outerRadius: 0.40,
+                                                       height: 0.005),
+                                     position: SCNVector3(0, 0, 0),
+                                     diffuse: .saturnRingDiffuse)
+        saturnRing.eulerAngles = SCNVector3(15.toRadians, 0, 0)
+        saturn.addChildNode(saturnRing)
+        
         let saturnParent = createParentNode(position: sunPosition)
         saturnParent.addChildNode(saturn)
         saturnParent.runAction(RotationAction(17))
