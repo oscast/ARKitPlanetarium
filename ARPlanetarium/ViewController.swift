@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         sceneView.session.run(configuration)
+        sceneView.autoenablesDefaultLighting = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
