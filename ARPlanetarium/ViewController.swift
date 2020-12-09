@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var sceneView: ARSCNView!
     
     let configuration = ARWorldTrackingConfiguration()
-    let sunPosition = SCNVector3(0,0,-2.5)
+    let sunPosition = SCNVector3(0,0,-0.4)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     }
     
     func createSun() {
-        let sun = createPlanetNode(geometry: SCNSphere(radius: 0.3),
+        let sun = createPlanetNode(geometry: SCNSphere(radius: 0.07),
                                    position: sunPosition,
                                    diffuse: .sunDiffuse)
         sceneView.scene.rootNode.addChildNode(sun)
@@ -52,8 +52,8 @@ class ViewController: UIViewController {
     
     func createMercury() {
         let mercuryParent = createParentNode(position: sunPosition)
-        let mercury = createPlanetNode(geometry: SCNSphere(radius: 0.03),
-                                       position: SCNVector3(0.45,0,0),
+        let mercury = createPlanetNode(geometry: SCNSphere(radius: 0.01),
+                                       position: SCNVector3(0.12,0,0),
                                        diffuse: .mercuryDiffuse)
         mercuryParent.addChildNode(mercury)
         mercury.runAction(RotationAction(6))
@@ -62,8 +62,8 @@ class ViewController: UIViewController {
     
     func createVenus() {
         let venusParent = createParentNode(position: sunPosition)
-        let venus = createPlanetNode(geometry: SCNSphere(radius: 0.08),
-                                     position: SCNVector3(0.80,0,0),
+        let venus = createPlanetNode(geometry: SCNSphere(radius: 0.02),
+                                     position: SCNVector3(0.16,0,0),
                                      diffuse: .venusDiffuse,
                                      specular: .venusSpecular)
         venusParent.addChildNode(venus)
@@ -72,8 +72,8 @@ class ViewController: UIViewController {
     }
     
     func createEarth() {
-        let earth = createPlanetNode(geometry: SCNSphere(radius: 0.06),
-                                     position: SCNVector3(1.20,0,0),
+        let earth = createPlanetNode(geometry: SCNSphere(radius: 0.015),
+                                     position: SCNVector3(0.21,0,0),
                                    diffuse: .earthDiffuse,
                                    specular: .earthSpecular,
                                    normal: .earthNormal,
@@ -87,8 +87,8 @@ class ViewController: UIViewController {
         let moonParent = SCNNode()
         moonParent.position = earth.position
         earthParent.addChildNode(moonParent)
-        let moon = createPlanetNode(geometry: SCNSphere(radius: 0.015),
-                                    position: SCNVector3(0.09, 0.09, 0),
+        let moon = createPlanetNode(geometry: SCNSphere(radius: 0.004),
+                                    position: SCNVector3(0.020, 0.020, 0),
                                     diffuse: .moonDiffuse)
         moonParent.addChildNode(moon)
         moonParent.runAction(RotationAction(3))
@@ -96,8 +96,8 @@ class ViewController: UIViewController {
     }
     
     func createMars() {
-        let mars = createPlanetNode(geometry: SCNSphere(radius: 0.05),
-                                    position: SCNVector3(1.35,0,0),
+        let mars = createPlanetNode(geometry: SCNSphere(radius: 0.012),
+                                    position: SCNVector3(0.24,0,0),
                                     diffuse: .marsDiffuse)
         
         let marsParent = createParentNode(position: sunPosition)
@@ -107,8 +107,8 @@ class ViewController: UIViewController {
     }
     
     func createJupiter() {
-        let jupiter = createPlanetNode(geometry: SCNSphere(radius: 0.16),
-                                    position: SCNVector3(1.50,0,0),
+        let jupiter = createPlanetNode(geometry: SCNSphere(radius: 0.03),
+                                       position: SCNVector3(0.29,0,0),
                                     diffuse: .jupiterDiffuse)
         
         let jupiterParent = createParentNode(position: sunPosition)
@@ -118,13 +118,13 @@ class ViewController: UIViewController {
     }
     
     func createSaturn() {
-        let saturn = createPlanetNode(geometry: SCNSphere(radius: 0.14),
-                                      position: SCNVector3(0,0,2.00),
+        let saturn = createPlanetNode(geometry: SCNSphere(radius: 0.028),
+                                      position: SCNVector3(0,0,0.35),
                                     diffuse: .saturnDiffuse)
         
-        let saturnRing = createPlanetNode(geometry: SCNTube(innerRadius: 0.15,
-                                                       outerRadius: 0.30,
-                                                       height: 0.005),
+        let saturnRing = createPlanetNode(geometry: SCNTube(innerRadius: 0.029,
+                                                            outerRadius: 0.044,
+                                                       height: 0.001),
                                      position: SCNVector3(0, 0, 0),
                                      diffuse: .saturnRingDiffuse)
         saturnRing.eulerAngles = SCNVector3(15.toRadians, 0, 0)
@@ -137,8 +137,8 @@ class ViewController: UIViewController {
     }
     
     func createUranus() {
-        let uranus = createPlanetNode(geometry: SCNSphere(radius: 0.12),
-                                      position: SCNVector3(0,0,-2.25),
+        let uranus = createPlanetNode(geometry: SCNSphere(radius: 0.026),
+                                      position: SCNVector3(0,0,0.43),
                                     diffuse: .uranusDiffuse)
         
         let uranusParent = createParentNode(position: sunPosition)
@@ -148,8 +148,8 @@ class ViewController: UIViewController {
     }
     
     func createNeptune() {
-        let neptune = createPlanetNode(geometry: SCNSphere(radius: 0.1),
-                                       position: SCNVector3(2.50,0,0),
+        let neptune = createPlanetNode(geometry: SCNSphere(radius: 0.024),
+                                       position: SCNVector3(0.47,0,0),
                                     diffuse: .neptuneDiffuse)
         
         let neptuneParent = createParentNode(position: sunPosition)
